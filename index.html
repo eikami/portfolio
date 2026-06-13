@@ -1,288 +1,1307 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Eliott Chiambretto — IT Portfolio</title>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root{
---bg:#081018;
---panel:#0d1722;
---panel2:#101d2d;
---line:#1d344f;
---txt:#edf4ff;
---muted:#8fa3bb;
---accent:#4db4ff;
---glow:rgba(77,180,255,.2);
-}
-*{margin:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-font-family:Space Grotesk,sans-serif;
-background:
-radial-gradient(circle at top,#11263f,#081018 60%);
-color:var(--txt);
-overflow-x:hidden;
-}
-body:before{
-content:"";
-position:fixed;inset:0;
-background-image:
-linear-gradient(var(--line) 1px, transparent 1px),
-linear-gradient(90deg,var(--line) 1px, transparent 1px);
-background-size:40px 40px;
-opacity:.18;
-pointer-events:none;
-}
-nav{
-position:fixed;top:18px;left:50%;
-transform:translateX(-50%);
-width:min(1200px,95%);
-display:flex;justify-content:space-between;
-padding:18px 26px;
-background:rgba(8,16,24,.75);
-backdrop-filter:blur(18px);
-border:1px solid var(--line);
-border-radius:18px;
-z-index:99;
-}
-.brand{
-font-family:JetBrains Mono;
-color:var(--accent);
-}
-nav a{
-color:var(--muted);
-text-decoration:none;
-margin-left:22px;
-font-size:.9rem;
-}
-section{
-padding:120px 8%;
-max-width:1400px;
-margin:auto;
-}
-.hero{
-min-height:100vh;
-display:grid;
-align-items:center;
-}
-.label{
-font-family:JetBrains Mono;
-color:var(--accent);
-letter-spacing:2px;
-}
-h1{
-font-size:min(7vw,90px);
-line-height:.95;
-margin:18px 0;
-}
-.sub{
-color:var(--muted);
-max-width:720px;
-line-height:1.8;
-font-size:1.1rem;
-}
-.cta{
-display:inline-block;
-margin-top:30px;
-padding:14px 24px;
-background:var(--accent);
-color:#04111c;
-font-weight:700;
-text-decoration:none;
-border-radius:14px;
-}
-.grid{display:grid;gap:24px}
-.two{grid-template-columns:1.2fr .8fr}
-.cards{grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
-.panel{
-background:linear-gradient(180deg,var(--panel),var(--panel2));
-border:1px solid var(--line);
-border-radius:24px;
-padding:28px;
-transition:.3s;
-}
-.panel:hover{
-transform:translateY(-6px);
-box-shadow:0 0 40px var(--glow);
-border-color:var(--accent);
-}
-h2{
-font-size:54px;
-margin-bottom:28px;
-}
-.small{
-font-family:JetBrains Mono;
-color:var(--accent);
-margin-bottom:14px;
-}
-.timeline{
-display:grid;
-gap:18px;
-}
-.node{
-padding:24px;
-border-left:3px solid var(--accent);
-}
-.skills span{
-display:inline-block;
-padding:10px 14px;
-margin:6px;
-background:#0b1520;
-border:1px solid var(--line);
-border-radius:999px;
-font-family:JetBrains Mono;
-}
-.world{
-height:420px;
-position:relative;
-overflow:hidden;
-}
-.mapline{
-position:absolute;
-left:10%;
-right:10%;
-top:50%;
-height:2px;
-background:linear-gradient(90deg,var(--accent),transparent);
-}
-.pin{
-position:absolute;
-width:16px;height:16px;
-border-radius:50%;
-background:var(--accent);
-box-shadow:0 0 25px var(--accent);
-}
-.pin::after{
-content:attr(data-name);
-position:absolute;
-top:22px;
-left:-20px;
-font-size:.8rem;
-font-family:JetBrains Mono;
-}
-.footer{
-text-align:center;
-padding:40px;
-color:var(--muted);
-}
-.reveal{
-opacity:0;
-transform:translateY(30px);
-transition:1s;
-}
-.show{opacity:1;transform:none}
-@media(max-width:900px){
-.two{grid-template-columns:1fr}
-h1{font-size:54px}
-nav .links{display:none}
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- ✏️ Modifier le titre de l'onglet navigateur -->
+  <title>Portfolio — Eliott Chiambretto</title>
+
+  <!-- ======================================================
+       🔧 GUIDE DE PERSONNALISATION RAPIDE
+       ======================================================
+       1. LINKEDIN   → Chercher "VOTRE-USERNAME" et remplacer partout
+                       Ex : https://www.linkedin.com/in/jean-dupont
+
+       2. FICHIERS TÉLÉCHARGEABLES (CV, tableau de compétences, etc.)
+          → Placez vos fichiers dans le MÊME dossier que ce fichier HTML
+          → Modifiez les attributs href="..." et download="..."
+          → Exemple : href="CV_Jean_Dupont.pdf" download="CV_Jean_Dupont.pdf"
+          → Vous pouvez ajouter autant de fichiers que vous voulez
+            en dupliquant les blocs <a class="download-card">
+
+       3. PHOTO      → Dans .profile-avatar ajoutez l'attribut style :
+                       style="background: url('photo.jpg') center/cover; color:transparent;"
+
+       4. INITIALES  → Modifier les lettres dans <div class="profile-avatar">
+  ====================================================== -->
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (icônes) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    /* ============================================================
+       PALETTE & VARIABLES
+    ============================================================ */
+    :root {
+      --nav-bg:          #0D1526;
+      --nav-width:       272px;
+      --accent:          #6D28D9;
+      --accent-bright:   #7C3AED;
+      --accent-glow:     rgba(109, 40, 217, 0.25);
+      --accent-soft:     rgba(124, 58, 237, 0.08);
+      --bg:              #EEF0F6;
+      --surface:         #FFFFFF;
+      --border:          #E2E8F0;
+      --text-primary:    #0F172A;
+      --text-secondary:  #64748B;
+      --text-muted:      #94A3B8;
+      --nav-text:        #8898B3;
+      --nav-active:      #FFFFFF;
+      --nav-border:      #1A2540;
+      --tag-bg:          #EDE9FE;
+      --tag-text:        #5B21B6;
+      --green:           #059669;
+      --green-bg:        #ECFDF5;
+      --blue-bg:         #EFF6FF;
+      --blue:            #1D4ED8;
+      --orange-bg:       #FFF7ED;
+      --orange:          #C2410C;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text-primary);
+      display: flex;
+      min-height: 100vh;
+      line-height: 1.5;
+    }
+
+    /* ============================================================
+       SIDEBAR
+    ============================================================ */
+    .sidebar {
+      width: var(--nav-width);
+      background: var(--nav-bg);
+      position: fixed;
+      top: 0; left: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 1.75rem 1.25rem;
+      z-index: 100;
+      overflow-y: auto;
+      border-right: 1px solid var(--nav-border);
+      transition: transform 0.3s ease;
+    }
+
+    /* PROFIL */
+    .profile-card {
+      text-align: center;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--nav-border);
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--nav-active);
+      line-height: 1.3;
+    }
+
+    .profile-role {
+      font-size: 0.72rem;
+      color: var(--nav-text);
+      margin-top: 0.3rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* NAV LINKS */
+    nav { flex: 1; }
+    nav ul { list-style: none; display: flex; flex-direction: column; gap: 0.15rem; }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.875rem;
+      border-radius: 8px;
+      cursor: pointer;
+      color: var(--nav-text);
+      font-size: 0.84rem;
+      font-weight: 500;
+      border: none;
+      background: none;
+      width: 100%;
+      text-align: left;
+      transition: all 0.18s;
+      font-family: inherit;
+    }
+
+    .nav-link:hover {
+      color: var(--nav-active);
+      background: rgba(255,255,255,0.04);
+    }
+
+    /* ⭐ SIGNATURE : bordure gauche violette sur l'onglet actif */
+    .nav-link.active {
+      color: var(--nav-active);
+      background: var(--accent-soft);
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+
+    .nav-link .ico {
+      width: 16px;
+      text-align: center;
+      font-size: 0.8rem;
+      flex-shrink: 0;
+      opacity: 0.85;
+    }
+
+    /* FOOTER SIDEBAR */
+    .sidebar-footer {
+      margin-top: auto;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--nav-border);
+    }
+
+    .social-row {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+    }
+
+    .social-btn {
+      width: 34px; height: 34px;
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--nav-text);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: all 0.18s;
+      border: 1px solid var(--nav-border);
+    }
+
+    .social-btn:hover {
+      color: white;
+      background: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    /* HAMBURGER (mobile) */
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 1rem; left: 1rem;
+      z-index: 200;
+      background: var(--nav-bg);
+      border: none;
+      color: white;
+      width: 40px; height: 40px;
+      border-radius: 8px;
+      font-size: 1rem;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ============================================================
+       CONTENU PRINCIPAL
+    ============================================================ */
+    .content {
+      margin-left: var(--nav-width);
+      flex: 1;
+      padding: 2.5rem 3rem 4rem;
+      max-width: calc(100% - var(--nav-width));
+    }
+
+    /* ============================================================
+       SECTIONS
+    ============================================================ */
+    .section { display: none; animation: fadeUp 0.32s ease; }
+    .section.active { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* En-tête de section */
+    .section-header { margin-bottom: 2rem; }
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-bright);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.4rem;
+    }
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 800;
+      color: var(--text-primary);
+      line-height: 1.15;
+    }
+    .section-sub {
+      font-size: 0.95rem;
+      color: var(--text-secondary);
+      margin-top: 0.4rem;
+      max-width: 560px;
+      line-height: 1.65;
+    }
+
+    /* ============================================================
+       CARTES
+    ============================================================ */
+    .card {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.06);
+      transform: translateY(-2px);
+    }
+    .card + .card { margin-top: 1.25rem; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.25rem; }
+
+    /* ============================================================
+       SECTION PRÉSENTATION — HERO
+    ============================================================ */
+    .hero {
+      background: linear-gradient(130deg, #0D1526 0%, #1a1f3c 60%, #1e1040 100%);
+      border-radius: 16px;
+      padding: 2.75rem 3rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 340px; height: 340px;
+      border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .hero-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem;
+      color: #A78BFA;
+      margin-bottom: 1rem;
+      display: flex; align-items: center; gap: 0.6rem;
+    }
+    .hero-label::before {
+      content: '';
+      width: 24px; height: 2px;
+      background: #A78BFA;
+      flex-shrink: 0;
+    }
+
+    .hero-name {
+      font-size: 2.75rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 0.75rem;
+    }
+    .hero-name span {
+      background: linear-gradient(90deg, #C4B5FD, #7C3AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 0.95rem;
+      color: #94A3B8;
+      max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .hero-cta { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    /* ============================================================
+       BOUTONS
+    ============================================================ */
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.65rem 1.25rem;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      transition: all 0.18s;
+      font-family: inherit;
+    }
+    .btn-primary { background: var(--accent); color: white; }
+    .btn-primary:hover {
+      background: var(--accent-bright);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px var(--accent-glow);
+    }
+    .btn-ghost {
+      background: transparent;
+      color: #CBD5E1;
+      border: 1px solid #2A3558;
+    }
+    .btn-ghost:hover { border-color: #A78BFA; color: #C4B5FD; background: var(--accent-soft); }
+
+    /* ============================================================
+       STATS RAPIDES
+    ============================================================ */
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.25rem;
+      text-align: center;
+    }
+    .stat-value {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+      margin-top: 0.35rem;
+    }
+
+    /* ============================================================
+       TÉLÉCHARGEMENTS
+    ============================================================ */
+    .dl-grid { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .dl-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.1rem 1.35rem;
+      display: flex; align-items: center; gap: 1rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.2s;
+      min-width: 200px;
+    }
+    .dl-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 14px var(--accent-glow);
+      transform: translateY(-2px);
+    }
+    .dl-icon {
+      width: 42px; height: 42px;
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .dl-name { font-size: 0.875rem; font-weight: 700; }
+    .dl-meta { font-size: 0.72rem; color: var(--text-secondary); margin-top: 0.1rem; }
+
+    /* ============================================================
+       TAGS
+    ============================================================ */
+    .tag {
+      display: inline-block;
+      background: var(--tag-bg);
+      color: var(--tag-text);
+      padding: 0.22rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .tag-green  { background: var(--green-bg);  color: var(--green); }
+    .tag-blue   { background: var(--blue-bg);   color: var(--blue); }
+    .tag-orange { background: var(--orange-bg); color: var(--orange); }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    /* ============================================================
+       TIMELINE (Parcours)
+    ============================================================ */
+    .timeline { position: relative; padding-left: 2rem; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.45rem; top: 8px; bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--accent), transparent);
+    }
+    .tl-item { position: relative; padding-bottom: 2rem; }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-item::before {
+      content: '';
+      position: absolute;
+      left: -1.7rem; top: 5px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid white;
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .tl-date {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--accent-bright);
+      font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.2rem;
+    }
+    .tl-title { font-size: 0.95rem; font-weight: 700; }
+    .tl-org { font-size: 0.82rem; color: var(--text-secondary); margin-bottom: 0.4rem; }
+    .tl-desc { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.65; }
+
+    /* ============================================================
+       COMPÉTENCES — barres animées
+    ============================================================ */
+    .skill-item { margin-bottom: 1.1rem; }
+    .skill-header { display: flex; justify-content: space-between; margin-bottom: 0.35rem; }
+    .skill-name  { font-size: 0.84rem; font-weight: 600; }
+    .skill-pct   { font-size: 0.72rem; font-weight: 600; color: var(--accent-bright); font-family: 'JetBrains Mono', monospace; }
+    .skill-bar   { height: 5px; background: var(--border); border-radius: 99px; overflow: hidden; }
+    .skill-fill  {
+      height: 100%;
+      background: linear-gradient(90deg, var(--accent), #A78BFA);
+      border-radius: 99px;
+      width: 0;
+      transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ============================================================
+       CERTIFICATIONS
+    ============================================================ */
+    .cert-row { display: flex; align-items: flex-start; gap: 1rem; }
+    .cert-ico {
+      width: 46px; height: 46px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.15rem;
+      flex-shrink: 0;
+    }
+    .cert-name { font-size: 0.9rem; font-weight: 700; }
+    .cert-org  { font-size: 0.8rem; color: var(--text-secondary); margin: 0.15rem 0; }
+    .cert-year { font-size: 0.72rem; color: var(--accent-bright); font-family: 'JetBrains Mono', monospace; }
+
+    /* ============================================================
+       PROJETS
+    ============================================================ */
+    .proj-header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; margin-bottom: 0.75rem;
+    }
+    .proj-title { font-size: 0.95rem; font-weight: 700; }
+    .proj-badge {
+      font-size: 0.68rem;
+      padding: 0.18rem 0.55rem;
+      border-radius: 99px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .proj-desc { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 1rem; }
+
+    .card.proj-empty {
+      border: 2px dashed var(--border);
+      background: transparent;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 140px;
+      cursor: default;
+    }
+    .card.proj-empty:hover { transform: none; box-shadow: none; }
+    .proj-empty-inner { text-align: center; color: var(--text-muted); }
+    .proj-empty-inner i { font-size: 1.4rem; margin-bottom: 0.4rem; display: block; }
+    .proj-empty-inner p { font-size: 0.8rem; font-weight: 600; }
+    .proj-empty-inner span { font-size: 0.72rem; }
+
+    /* ============================================================
+       VEILLE TECHNOLOGIQUE
+    ============================================================ */
+    .veille-border { border-left: 3px solid var(--accent); padding-left: 1rem; }
+    .veille-date   { font-size: 0.72rem; font-family: 'JetBrains Mono', monospace; color: var(--accent-bright); margin-bottom: 0.2rem; }
+    .veille-title  { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .veille-desc   { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.65; margin-bottom: 0.5rem; }
+    .veille-source { font-size: 0.72rem; color: var(--text-muted); }
+
+    /* ============================================================
+       CONTACT
+    ============================================================ */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+    .contact-item { display: flex; align-items: center; gap: 1rem; }
+    .contact-item + .contact-item { margin-top: 1.25rem; }
+    .contact-ico {
+      width: 42px; height: 42px;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.95rem; flex-shrink: 0;
+    }
+    .contact-lbl  { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
+    .contact-val  { font-size: 0.875rem; font-weight: 600; }
+    .contact-val a { color: var(--accent-bright); text-decoration: none; }
+    .contact-val a:hover { text-decoration: underline; }
+
+    .status-box {
+      background: var(--accent-soft);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .status-label { font-size: 0.75rem; font-weight: 600; color: var(--accent); margin-bottom: 0.25rem; }
+    .status-value { font-size: 0.875rem; font-weight: 700; }
+
+    .btn-dl {
+      display: flex; align-items: center; gap: 0.6rem;
+      padding: 0.65rem 1rem;
+      border-radius: 8px;
+      font-size: 0.84rem; font-weight: 600;
+      text-decoration: none;
+      border: 1px solid;
+      transition: all 0.18s;
+    }
+    .btn-dl-pdf   { background: var(--accent-soft);  color: var(--accent-bright); border-color: rgba(124,58,237,0.25); }
+    .btn-dl-pdf:hover   { background: var(--accent); color: white; border-color: var(--accent); }
+    .btn-dl-excel { background: var(--green-bg);     color: var(--green);         border-color: rgba(5,150,105,0.25); }
+    .btn-dl-excel:hover { background: var(--green);  color: white; border-color: var(--green); }
+
+    /* ============================================================
+       DIVIDER
+    ============================================================ */
+    .divider { border: none; border-top: 1px solid var(--border); margin: 1.75rem 0; }
+
+    /* ============================================================
+       CARD SECTION TITLE
+    ============================================================ */
+    .card-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+    }
+
+    /* ============================================================
+       RESPONSIVE MOBILE
+    ============================================================ */
+    @media (max-width: 860px) {
+      .sidebar { transform: translateX(-100%); }
+      .sidebar.open { transform: translateX(0); }
+      .hamburger { display: flex; }
+      .content { margin-left: 0; max-width: 100%; padding: 1.5rem 1.25rem 4rem; }
+      .content.shifted { pointer-events: none; opacity: 0.4; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .hero { padding: 2rem 1.5rem; }
+      .hero-name { font-size: 2rem; }
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-<div class="brand">// eliott.chiambretto</div>
-<div class="links">
-<a href="#about">ABOUT</a>
-<a href="#journey">JOURNEY</a>
-<a href="#skills">SKILLS</a>
-<a href="#contact">CONTACT</a>
-</div>
-</nav>
+<!-- ══════════════════════════════════════════
+     BOUTON HAMBURGER (mobile seulement)
+══════════════════════════════════════════ -->
+<button class="hamburger" id="hamburger" aria-label="Menu">
+  <i class="fa-solid fa-bars"></i>
+</button>
 
-<section class="hero reveal">
-<div>
-<div class="label">BTS SIO · SISR · INFRASTRUCTURE / NETWORK</div>
-<h1>Construire.<br>Maintenir.<br>Faire fonctionner.</h1>
-<div class="sub">
-Technicien Support à la MAF en alternance · Étudiant H3 Hitema · Portfolio orienté systèmes, réseaux et support IT.
-</div>
-<a href="#journey" class="cta">Explorer le parcours →</a>
-</div>
-</section>
+<!-- ══════════════════════════════════════════
+     SIDEBAR
+══════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
 
-<section id="about" class="reveal">
-<div class="grid two">
-<div class="panel">
-<div class="small">PROFILE</div>
-<h2>Eliott Chiambretto</h2>
-<div class="sub">
-Étudiant en BTS SIO SISR en alternance. Intérêt fort pour les environnements IT, le support utilisateur, les réseaux et l'administration système.
-</div>
-</div>
+  <div class="profile-card">
+    <!--
+      ✏️ INITIALES : modifier les deux lettres
+      ✏️ PHOTO     : ajouter dans le div ci-dessous :
+         style="background: url('ma_photo.jpg') center/cover; color:transparent;"
+    -->
+    <div class="profile-avatar">PN</div>
 
-<div class="panel">
-<div class="small">NODE_INFOS</div>
-📍 Paris<br><br>
-📞 06.44.32.31.11<br><br>
-✉️ eliottchiambretto@gmail.com<br><br>
-🎯 Maintenance · Support
-</div>
-</div>
-</section>
+    <!-- ✏️ Votre prénom + nom -->
+    <div class="profile-name">Eliott Chiambretto</div>
+    <!-- ✏️ Votre spécialité — SLAM ou SISR -->
+    <div class="profile-role">BTS SIO · SISR</div>
+  </div>
 
-<section id="journey" class="reveal">
-<div class="small">SYSTEM_PATH</div>
-<h2>Parcours IT</h2>
+  <nav>
+    <ul>
+      <li>
+        <button class="nav-link active" onclick="goTo('presentation', this)">
+          <i class="ico fa-solid fa-house"></i> Présentation
+        </button>
+      </li>
+      <li>
+        <button class="nav-link" onclick="goTo('bts', this)">
+          <i class="ico fa-solid fa-graduation-cap"></i> BTS
+        </button>
+      </li>
+      <li>
+        <button class="nav-link" onclick="goTo('parcours', this)">
+          <i class="ico fa-solid fa-road"></i> Mon Parcours
+        </button>
+      </li>
+      <li>
+        <button class="nav-link" onclick="goTo('competences', this)">
+          <i class="ico fa-solid fa-code"></i> Mes Compétences
+        </button>
+      </li>
+      <li>
+        <button class="nav-link" onclick="goTo('certifications', this)">
+          <i class="ico fa-solid fa-certificate"></i> Certifications
+        </button>
+      </li>
+      <li>
+        <button class="nav-link" onclick="goTo('projets', this)">
+          <i class="ico fa-solid fa-diagram-project"></i> Mes Projets
+        </button>
+      </li>
+      <li>
+        <button class="nav-link" onclick="goTo('veille', this)">
+          <i class="ico fa-solid fa-rss"></i> Veille Technologique
+        </button>
+      </li>
+      <li>
+        <button class="nav-link" onclick="goTo('contact', this)">
+          <i class="ico fa-solid fa-envelope"></i> Contact
+        </button>
+      </li>
+    </ul>
+  </nav>
 
-<div class="panel world">
-<div class="mapline"></div>
-<div class="pin" style="left:20%;top:55%" data-name="Chartres"></div>
-<div class="pin" style="left:48%;top:38%" data-name="Paris"></div>
-<div class="pin" style="left:74%;top:62%" data-name="Marseille"></div>
-</div>
+  <div class="sidebar-footer">
+    <div class="social-row">
+      <!--
+        ✏️ LINKEDIN : remplacer VOTRE-USERNAME par votre identifiant LinkedIn
+        Exemple : https://www.linkedin.com/in/jean-dupont
+      -->
+      <a class="social-btn" href="https://www.linkedin.com/in/eliott-chiambretto-141634324/"
+         target="_blank" rel="noopener noreferrer" title="Mon LinkedIn">
+        <i class="fa-brands fa-linkedin-in"></i>
+      </a>
 
-<div class="timeline" style="margin-top:24px">
-<div class="panel node">2025-2027 → BTS SIO SISR — H3 Hitema</div>
-<div class="panel node">2025 → BAC STMG</div>
-<div class="panel node">2025–2027 → MAF — Technicien Support</div>
-<div class="panel node">2024 → BAFA</div>
-</div>
+      <!-- ✏️ GitHub : remplacer VOTRE-USERNAME -->
+      <a class="social-btn" href="https://github.com/eikami"
+         target="_blank" rel="noopener noreferrer" title="Mon GitHub">
+        <i class="fa-brands fa-github"></i>
+      </a>
 
-</section>
+      <!-- ✏️ Email direct -->
+      <a class="social-btn" href="mailto:eliottchiambretto@gmail.com" title="M'écrire">
+        <i class="fa-solid fa-envelope"></i>
+      </a>
+    </div>
+  </div>
+</aside>
 
-<section id="skills" class="reveal">
-<div class="small">STACK</div>
-<h2>Compétences</h2>
+<!-- ══════════════════════════════════════════
+     CONTENU PRINCIPAL
+══════════════════════════════════════════ -->
+<main class="content" id="mainContent">
 
-<div class="panel skills">
-<span>Active Directory</span>
-<span>Microsoft 365</span>
-<span>VPN</span>
-<span>Support</span>
-<span>Réseau</span>
-<span>Maintenance</span>
-<span>Montage PC</span>
-<span>Infrastructure</span>
-</div>
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION 1 · PRÉSENTATION
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="presentation" class="section active">
 
-</section>
+    <!-- HERO -->
+    <div class="hero">
+      <!-- ✏️ Modifier l'année du portfolio -->
+      <div class="hero-label">Portfolio · 2026</div>
 
-<section id="contact" class="reveal">
-<div class="panel">
-<div class="small">CONNECT</div>
-<h2>Contact</h2>
-<div class="sub">
-Disponible pour échanger sur l’IT, les opportunités et les projets.
-</div>
-<br>
-Mon mail : eliottchiambretto@gmail.com
-Mon numéro de réléphone : 06.44.32.31.11
-Mon Linkedin : <a href="https://www.linkedin.com/in/eliott-chiambretto-141634324/" style="color:var(--accent);text-decoration:none">@EliottChiambretto</a
-</div>
-</section>
+      <div class="hero-name">
+        <!-- ✏️ Votre prénom + nom -->
+        Bonjour, je suis<br><span>Eliott Chiambretto</span>
+      </div>
 
-<div class="footer">
-SYSTEM READY • PORTFOLIO V3
-</div>
+      <p class="hero-desc">
+        <!-- ✏️ Votre description personnelle -->
+        Étudiant en BTS SIO option SISR, passionné par l'informatique et les nouvelles technologies. 
+        Curieux et motivé, je suis constamment à la recherche de nouveaux défis et tâches pour développer mes compétences techniques et professionnelles. 
+        Mon objectif est de contribuer activement à des projets tout en continuant à apprendre et à évoluer dans le domaine de l'informatique.
+      </p>
 
+      <div class="hero-cta">
+        <!--
+          ✏️ LINKEDIN : remplacer VOTRE-USERNAME
+        -->
+        <a class="btn btn-primary"
+           href="https://www.linkedin.com/in/eliott-chiambretto-141634324/"
+           target="_blank" rel="noopener noreferrer">
+          <i class="fa-brands fa-linkedin-in"></i> Voir mon LinkedIn
+        </a>
+
+        <!--
+          ✏️ CV : mettre CV_PrenomNom.pdf dans le même dossier que ce fichier HTML
+          → href  = nom du fichier sur votre ordinateur
+          → download = nom proposé au téléchargement
+        -->
+        <a class="btn btn-ghost" href="CV_EliottChiambretto.pdf" download="CV_EliottChiambretto.pdf">
+          <i class="fa-solid fa-download"></i> Télécharger mon CV
+        </a>
+      </div>
+    </div>
+
+    <!-- STATS RAPIDES -->
+    <div class="grid-3" style="margin-bottom: 1.25rem;">
+      <div class="stat-card">
+        <div class="stat-value">2</div>
+        <div class="stat-label">ans de formation</div>
+      </div>
+      <div class="stat-card">
+        <!-- ✏️ Nombre de projets -->
+        <div class="stat-value">1</div>
+        <div class="stat-label">projet réalisé</div>
+      </div>
+      <div class="stat-card">
+        <!-- ✏️ Nombre de certifications -->
+        <div class="stat-value">1</div>
+        <div class="stat-label">certification obtenue</div>
+      </div>
+    </div>
+
+    <!-- ────────────────────────────────────
+         TÉLÉCHARGEMENTS
+         ✏️ HOW TO ADD FILES :
+         1. Placez votre fichier (ex: CV.pdf) dans le même dossier que portfolio.html
+         2. Dupliquez un bloc <a class="dl-card"> et modifiez href et download
+         3. Choisissez une icône Font Awesome selon l'extension :
+            PDF  → fa-regular fa-file-pdf
+            Excel→ fa-regular fa-file-excel
+            Word → fa-regular fa-file-word
+            PPT  → fa-regular fa-file-powerpoint
+    ──────────────────────────────────── -->
+    <div class="card">
+      <div class="card-title">📎 Documents téléchargeables</div>
+      <div class="dl-grid">
+
+        <!-- FICHIER 1 : CV -->
+        <a class="dl-card" href="CV_EliottChiambretto.pdf" download="CV_EliottChiambretto.pdf">
+          <div class="dl-icon" style="background: var(--accent-soft); color: var(--accent);">
+            <i class="fa-regular fa-file-pdf"></i>
+          </div>
+          <div>
+            <div class="dl-name">Curriculum Vitae</div>
+            <!-- ✏️ Modifier la date de mise à jour -->
+            <div class="dl-meta">PDF · Mis à jour en 2025</div>
+          </div>
+        </a>
+
+        <!-- FICHIER 2 : Tableau de compétences -->
+        <a class="dl-card" href="tableau_synthese.xlsx" download="tableau_synthese.xlsx">
+          <div class="dl-icon" style="background: var(--green-bg); color: var(--green);">
+            <i class="fa-regular fa-file-excel"></i>
+          </div>
+          <div>
+            <div class="dl-name">Tableau de synthese</div>
+            <div class="dl-meta">Excel · BTS SIO</div>
+          </div>
+        </a>
+
+        <!--
+          ✏️ AJOUTER UN FICHIER SUPPLÉMENTAIRE : copier et coller le bloc ci-dessous
+          et remplacer href, download, le texte et l'icône.
+
+        <a class="dl-card" href="mon_fichier.pdf" download="mon_fichier.pdf">
+          <div class="dl-icon" style="background: var(--blue-bg); color: var(--blue);">
+            <i class="fa-regular fa-file-word"></i>
+          </div>
+          <div>
+            <div class="dl-name">Nom du document</div>
+            <div class="dl-meta">Format · Description</div>
+          </div>
+        </a>
+        -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION 2 · BTS
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="bts" class="section">
+    <div class="section-header">
+      <div class="eyebrow">Formation diplômante</div>
+      <h2 class="section-title">Mon BTS</h2>
+      <p class="section-sub">Brevet de Technicien Supérieur — Services Informatiques aux Organisations</p>
+    </div>
+
+    <div class="grid-2" style="margin-bottom: 1.25rem;">
+      <!-- Infos générales -->
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:0.875rem; margin-bottom:1.25rem;">
+          <div class="cert-ico" style="background:var(--accent-soft); color:var(--accent);">
+            <i class="fa-solid fa-school"></i>
+          </div>
+          <div>
+            <!-- ✏️ Nom de votre établissement -->
+            <div style="font-weight:700; font-size:0.95rem;">Ecole H3 Hitema</div>
+            <!-- ✏️ Ville et département -->
+            <div style="font-size:0.8rem; color:var(--text-secondary);">Paris (75015), Île-de-France</div>
+          </div>
+        </div>
+
+        <div style="display:grid; gap:0.6rem;">
+          <div style="display:flex; justify-content:space-between; font-size:0.875rem;">
+            <span style="color:var(--text-secondary);">Diplôme</span>
+            <span style="font-weight:600;">BTS SIO</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:0.875rem;">
+            <span style="color:var(--text-secondary);">Option</span>
+            <!-- ✏️ SLAM ou SISR -->
+            <span style="font-weight:600;">SISR</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:0.875rem;">
+            <span style="color:var(--text-secondary);">Durée</span>
+            <!-- ✏️ Modifier les années -->
+            <span style="font-weight:600;">2 ans (2025 – 2027)</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; font-size:0.875rem;">
+            <span style="color:var(--text-secondary);">Rythme</span>
+            <!-- ✏️ Initial ou Alternance -->
+            <span style="font-weight:600;">Alternance</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Objectifs -->
+      <div class="card">
+        <div class="card-title">🎯 Objectifs de la formation</div>
+        <p style="font-size:0.875rem; color:var(--text-secondary); line-height:1.75;">
+          <!-- ✏️ Décrire la formation -->
+          Le BTS SIO spécialisé en SISR forme des techniciens capables de gérer et sécuriser les infrastructures informatiques d'une organisation.
+            Les compétences développées incluent l'administration de réseaux, la maintenance de systèmes, la cybersécurité et le support technique, nous préparant ainsi à des rôles important dans une entreprise dans le secteur IT.
+        </p>
+      </div>
+    </div>
+
+    <!-- Matières -->
+    <div class="card" style="margin-bottom: 1.25rem;">
+      <div class="card-title">📚 Programme principal</div>
+      <div class="grid-3">
+        <!-- ✏️ Modifier les matières selon votre programme réel -->
+        <div>
+          <div style="font-size:0.75rem; font-weight:700; color:var(--accent); text-transform:uppercase; letter-spacing:0.07em; margin-bottom:0.6rem;">Développement</div>
+          <ul style="font-size:0.84rem; color:var(--text-secondary); line-height:2; list-style:none;">
+            <li>• Administrations Systèmes & Réseaux</li>
+            <li>• Cybersécurité & RGPD</li>
+            <li>• Anglais technique</li>
+            <li>• CEJM (Economie, Management et Droit)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Épreuves -->
+    <div class="card">
+      <div class="card-title">📋 Épreuves professionnelles</div>
+      <p style="font-size:0.875rem; color:var(--text-secondary); line-height:1.75; margin-bottom:0.875rem;">
+        <!-- ✏️ Décrire vos épreuves -->
+        Les épreuves E4, E5 et E6 évaluent la capacité à mener des situations professionnelles réelles,
+        documentées dans un portfolio de compétences validé par un jury.
+      </p>
+      <div class="tags">
+        <span class="tag">E4 — Support & Mise à disposition</span>
+        <span class="tag">E5 — Administration d'infrastructures</span>
+        <span class="tag">E6 — Cybersécurité des services</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION 3 · MON PARCOURS
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="parcours" class="section">
+    <div class="section-header">
+      <div class="eyebrow">Expériences & Formation</div>
+      <h2 class="section-title">Mon Parcours</h2>
+      <p class="section-sub">Chronologie de mon parcours académique et professionnel.</p>
+    </div>
+
+    <div class="card">
+      <div class="timeline">
+        <!--
+          ✏️ AJOUTER UNE ÉTAPE : dupliquer un bloc tl-item et modifier les dates,
+          le titre, l'organisation et la description.
+          Le plus récent doit être en HAUT.
+        -->
+
+        <div class="tl-item">
+          <!-- ✏️ Dates -->
+          <div class="tl-date">2025 — Aujourd'hui</div>
+          <!-- ✏️ Titre du diplôme ou poste -->
+          <div class="tl-title">BTS SIO option SISR</div>
+          <!-- ✏️ Établissement et ville -->
+          <div class="tl-org">H3 Hitema — Paris (75015)</div>
+          <!-- ✏️ Description courte -->
+          <div class="tl-desc">Formation en cours d'apprentissage en alternance spécialisé dans les systèmes et réseaux.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">2025 - Aujourd'hui</div>
+          <div class="tl-title">Alternance - Technicien Support Helpdesk</div>
+          <div class="tl-org">MAF - Paris (75015)</div>
+          <div class="tl-desc">Lors de mon alternance chez la MAF, j'assure le support technique de niveau 1 pour les utilisateurs internes, en résolvant les incidents liés aux postes de travail, aux applications métiers et aux accès réseau. 
+            Je participe également à la maintenance préventive des équipements informatiques et à la documentation des procédures de support.</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-date">2025</div>
+          <div class="tl-title">Baccalauréat STMG - Spécialité SIG</div>
+          <div class="tl-org">Lycée Fulbert — Chartres (28000)</div>
+        </div>
+
+        <!-- Ajouter d'autres étapes ici -->
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION 4 · MES COMPÉTENCES
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="competences" class="section">
+    <div class="section-header">
+      <div class="eyebrow">Savoir-faire technique</div>
+      <h2 class="section-title">Mes Compétences</h2>
+    </div>
+
+    <div class="grid-2" style="margin-bottom:1.25rem;">
+      <!-- Réseaux & Systèmes -->
+      <div class="card">
+        <div class="card-title">💻 Réseaux & Systèmes</div>
+        <!-- ✏️ Modifier les noms et les pourcentages (data-width) -->
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Packet Tracer</span><span class="skill-pct">35%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="35"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">VM Ware Workstation</span><span class="skill-pct">60%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="60"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Active Directory</span><span class="skill-pct">15%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="15"></div></div>
+        </div>
+      </div>
+
+      <!-- Outils -->
+      <div class="card">
+        <div class="card-title">🛠️ Outils</div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Git / Windows</span><span class="skill-pct">65%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="65"></div></div>
+        </div>
+        <div class="skill-item">
+          <div class="skill-header"><span class="skill-name">Linux (Ubuntu)</span><span class="skill-pct">30%</span></div>
+          <div class="skill-bar"><div class="skill-fill" data-width="30"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Réseau -->
+      <div class="card">
+        <div class="card-title">🌐 Réseaux & Systèmes</div>
+        <!-- ✏️ Modifier les tags selon vos compétences réseau -->
+        <div class="tags">
+          <span class="tag">VLAN</span>
+          <span class="tag">Routage statique</span>
+          <span class="tag">Active Directory</span>
+          <span class="tag">Cisco Packet Tracer</span>
+          <span class="tag">VPN</span>
+        </div>
+      </div>
+
+      <!-- Soft skills -->
+      <div class="card">
+        <div class="card-title">🤝 Compétences transversales</div>
+        <div class="tags">
+          <span class="tag tag-green">Travail en équipe</span>
+          <span class="tag tag-blue">Veille technologique</span>
+          <span class="tag tag-blue">Communication</span>
+          <span class="tag tag-orange">Autonomie</span>
+          <span class="tag tag-orange">Rigueur</span>
+          <span class="tag tag-orange">RGPD</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION 5 · CERTIFICATIONS
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="certifications" class="section">
+    <div class="section-header">
+      <div class="eyebrow">Diplômes additionnels</div>
+      <h2 class="section-title">Mes Certifications</h2>
+    </div>
+
+    <div class="grid-2">
+      <!--
+        ✏️ Dupliquer un bloc .card pour ajouter une certification
+        Icônes disponibles : fa-brands fa-google, fa-brands fa-microsoft,
+        fa-brands fa-aws, fa-solid fa-shield-halved, fa-solid fa-code, etc.
+      -->
+
+      <div class="card">
+        <div class="cert-row">
+          <div class="cert-ico" style="background:var(--accent-soft); color:var(--accent);">
+          </div>
+          <div>
+            <div class="cert-name">Cisco Cybersécurité (en cours)</div>
+            <div class="cert-org">Cisco</div>
+            <div class="cert-year">2026</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="cert-row">
+          <div class="cert-ico" style="background:var(--green-bg); color:var(--green);">
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+          <div>
+            <div class="cert-name">PIX — Certification numérique (450 points)</div>
+            <div class="cert-org">PIX (Éducation Nationale)</div>
+            <div class="cert-year">2024</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION 6 · MES PROJETS
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="projets" class="section">
+    <div class="section-header">
+      <div class="eyebrow">Réalisations</div>
+      <h2 class="section-title">Mes Projets</h2>
+      <p class="section-sub">Projets réalisés en formation</p>
+    </div>
+
+    <div class="grid-2">
+      <!--
+        ✏️ AJOUTER UN PROJET : dupliquer un bloc .card et modifier :
+           - proj-title  → nom du projet
+           - proj-badge  → Scolaire | Stage | Personnel | Atelier
+           - proj-desc   → description courte
+           - .tags       → technologies utilisées
+      -->
+
+      <div class="card">
+        <div class="proj-header">
+          <div class="proj-title">Mise en place et configuration de GLPI</div>
+          <span class="proj-badge tag tag-blue">Scolaire</span>
+        </div>
+        <p class="proj-desc">
+          Mise en place et configuration d'un système de gestion de la maintenance informatique (GLPI),
+          avec gestion des tickets, inventaire et reporting.
+        </p>
+        <div class="tags">
+          <span class="tag">Linux</span>
+          <span class="tag">MariaDB</span>
+          <span class="tag">GLPI</span>
+        </div>
+      </div>
+
+      </div>
+  </section>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION 7 · VEILLE TECHNOLOGIQUE
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="veille" class="section">
+    <div class="section-header">
+      <h2 class="section-title">Veille Technologique</h2>
+      <p class="section-sub">Suivi régulier des actualités et tendances du secteur informatique.</p>
+    </div>
+
+    <!-- Sources -->
+    <div class="card" style="margin-bottom:1.25rem;">
+      <div class="card-title">📡 Mes sources de veille</div>
+      <!-- ✏️ Modifier vos sources -->
+      <div class="tags">
+        <span class="tag">CNIL</span>
+        <span class="tag">ANSSI</span>
+        <span class="tag">MAF</span>
+        <span class="tag">Linkedin</span>
+        <span class="tag">Youtube</span>
+      </div>
+    </div>
+
+    <!-- Articles -->
+    <div class="grid-2">
+      <!--
+        ✏️ AJOUTER UN ARTICLE : dupliquer un bloc .card et modifier
+           veille-date, veille-title, description, veille-source
+      -->
+
+      <div class="card">
+        <div class="veille-border">
+          <div class="veille-date">Novembre 2025</div>
+          <div class="veille-title">Les fuites de données, un défi croissant pour les entreprises</div>
+          <p class="veille-desc">
+            Comment les entreprises peuvent se protéger contre les fuites de données, 
+            et quelles sont les meilleures pratiques pour sécuriser les informations sensibles.
+            De plus, comment réagir en cas de violation de données et les implications légales selon le RGPD.
+          </p>
+          <div class="veille-source">📰 CNIL · ANSSI</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       SECTION 8 · CONTACT
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+  <section id="contact" class="section">
+    <div class="section-header">
+      <div class="eyebrow">Me Contacter</div>
+      <h2 class="section-title">Contact</h2>
+      <p class="section-sub">N'hésitez pas à me contacter.</p>
+    </div>
+
+    <div class="contact-grid">
+      <!-- COLONNE GAUCHE : coordonnées -->
+      <div>
+        <div class="card" style="margin-bottom:1.25rem;">
+          <div class="card-title">📬 Mes coordonnées</div>
+
+          <div class="contact-item">
+            <div class="contact-ico" style="background:var(--accent-soft); color:var(--accent);">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div>
+              <div class="contact-lbl">Email</div>
+              <!-- ✏️ Votre adresse email -->
+              <div class="contact-val"><a href="mailto:eliottchiambretto@gmail.com">eliottchiambretto@gmail.com</a></div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-ico" style="background:#E8F4FD; color:#0077B5;">
+              <i class="fa-brands fa-linkedin-in"></i>
+            </div>
+            <div>
+              <div class="contact-lbl">LinkedIn</div>
+              <!--
+                ✏️ LINKEDIN : remplacer VOTRE-USERNAME
+                Exemple : href="https://www.linkedin.com/in/jean-dupont"
+                Et modifier le texte affiché
+              -->
+              <div class="contact-val">
+                <a href="https://www.linkedin.com/in/eliott-chiambretto-141634324/"
+                   target="_blank" rel="noopener noreferrer">
+                  linkedin.com/in/eliott-chiambretto-141634324/
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-ico" style="background:#F5F5F5; color:#333;">
+              <i class="fa-brands fa-github"></i>
+            </div>
+            <div>
+              <div class="contact-lbl">GitHub</div>
+              <!-- ✏️ Votre profil GitHub -->
+              <div class="contact-val">
+                <a href="https://github.com/eikami"
+                   target="_blank" rel="noopener noreferrer">
+                  github.com/eikami
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-ico" style="background:var(--green-bg); color:var(--green);">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <div class="contact-lbl">Localisation</div>
+              <!-- ✏️ Votre ville -->
+              <div class="contact-val">Paris, France</div>
+            </div>
+          </div>
+        </div>
+
+ 
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
 <script>
-const obs=new IntersectionObserver(e=>{
-e.forEach(x=>x.isIntersecting&&x.target.classList.add("show"))
-},{threshold:.1});
-document.querySelectorAll(".reveal").forEach(x=>obs.observe(x));
+  // ─── NAVIGATION ───────────────────────────
+  function goTo(id, btn) {
+    // Fermer la sidebar sur mobile
+    if (window.innerWidth <= 860) toggleMenu(false);
+
+    // Masquer toutes les sections, désactiver tous les liens
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+
+    // Activer la section et le lien ciblés
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+
+    // Déclencher l'animation des barres de compétences
+    if (id === 'competences') animateBars();
+  }
+
+  // ─── BARRES DE COMPÉTENCES ────────────────
+  function animateBars() {
+    document.querySelectorAll('.skill-fill').forEach(bar => {
+      const w = bar.getAttribute('data-width');
+      setTimeout(() => { bar.style.width = w + '%'; }, 80);
+    });
+  }
+
+  // ─── MENU HAMBURGER (mobile) ──────────────
+  const sidebar = document.getElementById('sidebar');
+  const main    = document.getElementById('mainContent');
+  const ham     = document.getElementById('hamburger');
+
+  function toggleMenu(force) {
+    const open = (force !== undefined) ? force : !sidebar.classList.contains('open');
+    sidebar.classList.toggle('open', open);
+    main.classList.toggle('shifted', open);
+    ham.innerHTML = open
+      ? '<i class="fa-solid fa-xmark"></i>'
+      : '<i class="fa-solid fa-bars"></i>';
+  }
+
+  ham.addEventListener('click', () => toggleMenu());
+
+  // Fermer si clic en dehors du menu sur mobile
+  main.addEventListener('click', () => {
+    if (window.innerWidth <= 860 && sidebar.classList.contains('open')) toggleMenu(false);
+  });
 </script>
 
 </body>
